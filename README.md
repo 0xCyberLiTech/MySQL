@@ -57,7 +57,6 @@
 | 02  | Installation et utilisation MariaDB | [![Voir](https://img.shields.io/badge/Voir-02-blue)](#2-installation-et-utilisation-mariadb) |
 
 
-<a name="balise-01"></a>
 # Qu'est-ce que MySQL / MariaDB
 
 # 🐬 MySQL / MariaDB – Présentation professionnelle
@@ -135,3 +134,6 @@
 <p align="center">
   <b>🔒 Un guide proposé par <a href="https://github.com/0xCyberLiTech">0xCyberLiTech</a> • Pour des tutoriels accessibles à tous. 🔒</b>
 </p>
+
+<a name="balise-01"></a>
+
