@@ -56,6 +56,11 @@
 | 01  | Qu'est-ce que c'est ?               | [![Voir](https://img.shields.io/badge/Voir-01-blue)](https://github.com/0xCyberLiTech/MySQL/blob/main/README.md) |
 | 02  | Installation et utilisation MariaDB | [![Voir](https://img.shields.io/badge/Voir-02-blue)](#balise-02) |
 
+| Nº  | Astuce                              | Lien vers la section                                                  |
+|-----|-------------------------------------|-----------------------------------------------------------------------|
+| 01  | Qu'est-ce que c'est ?               | [Voir la section](https://github.com/0xCyberLiTech/MySQL/blob/main/README.md) ![Badge](https://img.shields.io/badge/Voir-01-blue) |
+
+
 <a name="balise-01"></a>
 # Qu'est-ce que MySQL / MariaDB
 
