@@ -49,7 +49,7 @@
 
 ---
 
-# 🐬 Installation & utilisation de MariaDB sur Debian 12 & 13.
+# 🐬 Installation & utilisation de MariaDB.
 
 ## 🎯 Objectif de ce dépôt
 
