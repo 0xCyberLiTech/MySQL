@@ -51,16 +51,13 @@
 
 # Sommaire :
 
-| Catégorie | Sujet | Accès Rapide |
-|:---:|:---|:---:|
-| MySQL | Qu'est-ce que c'est ? | [<img src="https://img.shields.io/badge/EXPLORER-brightgreen?style=for-the-badge&logo=github&logoColor=white">](https://github.com/0xCyberLiTech/MySQL/blob/main/README.md) |
-| MySQL | Installation et utilisation MariaDB | [<img src="https://img.shields.io/badge/EXPLORER-brightgreen?style=for-the-badge&logo=github&logoColor=white">]
-
 | Nº  | Astuce                                     | Lien vers la section                           |
 |-----|--------------------------------------------|-----------------------------------------------|
-| 01  | Qu'est-ce que c'est ?                      | [![Voir](https://img.shields.io/badge/Voir-01-blue)](#balise-01)       |
+| 01  | Qu'est-ce que c'est ?                      | [![Voir](https://img.shields.io/badge/Voir-01-blue)](https://github.com/0xCyberLiTech/MySQL/blob/main/README.md)       |
 | 02  | Installation et utilisation MariaDB        | [![Voir](https://img.shields.io/badge/Voir-02-blue)](#balise-02)       |
 
+
+<a name="balise-01"></a>
 # Qu'est-ce que MySQL / MariaDB
 
 # 🐬 MySQL / MariaDB – Présentation professionnelle
