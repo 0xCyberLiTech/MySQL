@@ -56,7 +56,8 @@
 
 ## 🎯 Objectif du tutoriel
 
-Installer, configurer et manipuler MariaDB sur Debian 12 ou 13 avec une approche pédagogique et des exemples concrets :  
+Installer, configurer et manipuler MariaDB sur Debian 12 ou 13 avec une approche pédagogique et des exemples concrets :
+>
 ✔️ Installation  
 ✔️ Création de base de données  
 ✔️ Gestion des utilisateurs et privilèges  
