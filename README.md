@@ -55,11 +55,7 @@
 |-----|-------------------------------------|-----------------------------------------------------------------------|
 | 01  |  Installation & utilisation de MariaDB.             | [![Voir](https://img.shields.io/badge/Voir-01-blue)](https://github.com/0xCyberLiTech/MySQL/blob/main/MySQL-Installation-utilisation.md) |
 
-# Qu'est-ce que MySQL / MariaDB
-
-# 🐬 MySQL / MariaDB – Présentation professionnelle
-
-## 🔍 Qu'est-ce que MySQL / MariaDB ?
+# 🐬 Qu'est-ce que MySQL / MariaDB ?
 
 **MySQL** et **MariaDB** sont des **Systèmes de Gestion de Bases de Données Relationnelles (SGBDR)**. Ils permettent de créer, gérer, interroger et sécuriser des bases de données structurées. Très utilisés dans le développement web et les applications métier, ils reposent sur le langage **SQL (Structured Query Language)**.
 
