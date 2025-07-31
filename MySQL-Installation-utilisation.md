@@ -11,7 +11,7 @@
   </a>
 
   <p align="center">
-    <em>Tutoriel complet – MariaDB sur Debian 12 & 13.</em><br>
+    <em>Installation & utilisation de MariaDB sur Debian 12 & 13.</em><br>
     <b>🌐 Web – 🔐 Sécurité – 🚀 Performance</b>
   </p>
 
@@ -49,7 +49,7 @@
 
 ---
 
-# 🐬 Tutoriel complet – MariaDB sur Debian 12 & 13
+# 🐬 Installation & utilisation de MariaDB sur Debian 12 & 13.
 
 ## 🎯 Objectif de ce dépôt
 
@@ -299,17 +299,6 @@ sudo ufw deny 3306
 
 ---
 
-✍️ Auteur : [0xCyberLiTech](https://github.com/0xCyberLiTech)  
-📅 Version : Debian 12 & 13 — MariaDB stable
-
----
-
 <p align="center">
   <b>🔒 Un guide proposé par <a href="https://github.com/0xCyberLiTech">0xCyberLiTech</a> • Pour des tutoriels accessibles à tous. 🔒</b>
 </p>
-
-
-
-
-
-
