@@ -54,7 +54,7 @@
 | Nº  | Astuce                              | Lien vers la section                                                  |
 |-----|-------------------------------------|-----------------------------------------------------------------------|
 | 01  | Qu'est-ce que c'est ?               | [![Voir](https://img.shields.io/badge/Voir-01-blue)](https://github.com/0xCyberLiTech/MySQL/blob/main/MySQL-Installation-utilisation.md) |
-| 02  | Installation et utilisation MariaDB | [![Voir](https://img.shields.io/badge/Voir-02-blue)](#2-installation-et-utilisation-mariadb) |
+| 02  | Installation et utilisation MariaDB | [![Voir](https://img.shields.io/badge/Voir-02-blue)]() |
 
 
 # Qu'est-ce que MySQL / MariaDB
