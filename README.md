@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/0xCyberLiTech" target="_blank" rel="noopener">
-    <img src="./images/mysql_logo.png" alt="Logo MySQL" width="360">
+    <img src="./images/mysql_logo.png" alt="Logo MySQL" width="250">
   </a>
 </p>
 
