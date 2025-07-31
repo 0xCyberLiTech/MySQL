@@ -51,9 +51,10 @@
 
 # Sommaire :
 
-| Nº  | Astuce                              | Lien vers la section                                                  |
-|-----|-------------------------------------|-----------------------------------------------------------------------|
-| 01  | Qu'est-ce que c'est ?               | [Voir](https://github.com/0xCyberLiTech/MySQL/blob/main/README.md)    |
+| Nº  | Astuce                | Lien vers la section                                                  |
+|-----|------------------------|-----------------------------------------------------------------------|
+| 01  | Qu'est-ce que c'est ? | [Voir](https://github.com/0xCyberLiTech/MySQL/blob/main/README.md)   |
+
 
 <a name="balise-01"></a>
 # Qu'est-ce que MySQL / MariaDB
