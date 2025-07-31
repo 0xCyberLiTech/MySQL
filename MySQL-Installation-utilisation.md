@@ -49,7 +49,8 @@
 
 ---
 
-# 🐬 Installation & utilisation de MariaDB.
+
+# 🐬 Installation & utilisation de MariaDB
 
 ---
 
@@ -125,13 +126,35 @@ SHOW TABLES;
 
 -- Voir la structure d'une table
 DESCRIBE nom_de_la_table;
+
+-- Créer une base de données si elle n'existe pas
+CREATE DATABASE IF NOT EXISTS cyberlogs;
+
+-- Supprimer une base
+DROP DATABASE nom_de_la_base;
+
+-- Créer une table si elle n'existe pas
+CREATE TABLE IF NOT EXISTS logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    message TEXT
+);
+
+-- Supprimer une table
+DROP TABLE nom_de_la_table;
+
+-- Lister les utilisateurs
+SELECT User, Host FROM mysql.user;
+
+-- Afficher les privilèges d’un utilisateur
+SHOW GRANTS FOR 'analyste'@'localhost';
+
+-- Afficher la base en cours
+SELECT DATABASE();
 ```
 
 ---
 
 ## 🧪 4. Création d’une base de données & d’un utilisateur
-
-### ✅ Exemple concret : une base nommée `cyberlogs`
 
 ```sql
 CREATE DATABASE cyberlogs;
@@ -158,6 +181,20 @@ INSERT INTO connexions (adresse_ip, timestamp, statut)
 VALUES 
 ('192.168.1.10', NOW(), 'autorisé'),
 ('10.0.0.5', NOW(), 'refusé');
+
+-- Modifier une table
+ALTER TABLE connexions ADD navigateur VARCHAR(100);
+ALTER TABLE connexions MODIFY statut VARCHAR(30);
+ALTER TABLE connexions DROP navigateur;
+
+-- Supprimer toutes les données (sans supprimer la table)
+TRUNCATE TABLE connexions;
+
+-- Mise à jour
+UPDATE connexions SET statut = 'autorisé' WHERE adresse_ip = '10.0.0.5';
+
+-- Suppression de lignes
+DELETE FROM connexions WHERE adresse_ip = '10.0.0.5';
 ```
 
 ### 🔍 Interroger les données
@@ -171,17 +208,28 @@ SELECT * FROM connexions WHERE statut = 'refusé';
 
 ## 🔒 6. Gestion des privilèges
 
-### 🔐 Révocation d'accès
-
 ```sql
+-- Révoquer les privilèges
 REVOKE ALL PRIVILEGES ON cyberlogs.* FROM 'analyste'@'localhost';
 DROP USER 'analyste'@'localhost';
-```
 
-### 👀 Voir les utilisateurs
+-- Donner des privilèges spécifiques
+GRANT SELECT, INSERT ON cyberlogs.connexions TO 'lecteur'@'localhost';
 
-```sql
+-- Révoquer un privilège spécifique
+REVOKE INSERT ON cyberlogs.connexions FROM 'lecteur'@'localhost';
+
+-- Supprimer un utilisateur
+DROP USER IF EXISTS 'lecteur'@'localhost';
+
+-- Modifier un mot de passe
+ALTER USER 'analyste'@'localhost' IDENTIFIED BY 'NouveauPass123!';
+
+-- Voir tous les utilisateurs
 SELECT User, Host FROM mysql.user;
+
+-- Voir les privilèges d’un utilisateur
+SHOW GRANTS FOR 'analyste'@'localhost';
 ```
 
 ---
@@ -189,7 +237,17 @@ SELECT User, Host FROM mysql.user;
 ## 📤 7. Export d'une base de données
 
 ```bash
+# Export d'une base
 mysqldump -u root -p cyberlogs > cyberlogs_backup.sql
+
+# Export structure uniquement
+mysqldump -u root -p --no-data cyberlogs > cyberlogs_structure.sql
+
+# Export d'une table spécifique
+mysqldump -u root -p cyberlogs connexions > connexions_backup.sql
+
+# Export de toutes les bases
+mysqldump -u root -p --all-databases > all_databases_backup.sql
 ```
 
 ---
@@ -197,7 +255,14 @@ mysqldump -u root -p cyberlogs > cyberlogs_backup.sql
 ## 📥 8. Import d’une base de données
 
 ```bash
+# Créer la base si nécessaire
+mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS cyberlogs;"
+
+# Import d'un dump
 mysql -u root -p cyberlogs < cyberlogs_backup.sql
+
+# Import global
+mysql -u root -p < all_databases_backup.sql
 ```
 
 ---
@@ -206,71 +271,55 @@ mysql -u root -p cyberlogs < cyberlogs_backup.sql
 
 ```sql
 DROP DATABASE cyberlogs;
+DROP DATABASE IF EXISTS cyberlogs;
+
 DROP TABLE connexions;
+DROP TABLE IF EXISTS connexions;
 ```
 
 ---
 
 ## 🛡️ 10. Sécurisation avancée de MariaDB
 
-### ✅ Supprimer les utilisateurs anonymes
-
 ```sql
+-- Supprimer les utilisateurs anonymes
 DELETE FROM mysql.user WHERE User='';
 FLUSH PRIVILEGES;
-```
 
-### ✅ Restreindre l'accès root au localhost
-
-```sql
+-- Restreindre root à localhost
 UPDATE mysql.user SET Host='localhost' WHERE User='root';
 FLUSH PRIVILEGES;
-```
 
-### ✅ Créer des utilisateurs dédiés
-
-```sql
+-- Créer un utilisateur dédié
 CREATE USER 'webapp'@'localhost' IDENTIFIED BY 'PasswordSecur3!';
 GRANT SELECT, INSERT, UPDATE, DELETE ON cyberlogs.* TO 'webapp'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-### ✅ Désactiver l’accès distant
+### 🔧 Fichier de configuration
 
 Dans `/etc/mysql/mariadb.conf.d/50-server.cnf` :
 
 ```ini
 bind-address = 127.0.0.1
-```
 
-```bash
-sudo systemctl restart mariadb
-```
-
-### ✅ Sécuriser les fichiers système
-
-```bash
-sudo chown -R mysql:mysql /var/lib/mysql
-sudo chmod -R 750 /var/lib/mysql
-```
-
-### ✅ Activer le journal général des requêtes
-
-Dans `/etc/mysql/mariadb.conf.d/50-server.cnf` :
-
-```ini
 [mysqld]
 general_log = 1
 general_log_file = /var/log/mysql/general.log
 ```
 
 ```bash
+# Fichiers et permissions
+sudo chown -R mysql:mysql /var/lib/mysql
+sudo chmod -R 750 /var/lib/mysql
+
+# Journalisation
 sudo touch /var/log/mysql/general.log
 sudo chown mysql:mysql /var/log/mysql/general.log
 sudo systemctl restart mariadb
 ```
 
-### ✅ Bloquer les connexions réseau au port 3306
+### 🔥 Pare-feu
 
 ```bash
 sudo ufw allow OpenSSH
