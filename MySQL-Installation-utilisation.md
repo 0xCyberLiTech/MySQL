@@ -49,17 +49,24 @@
 
 ---
 
-
 # 🐬 Tutoriel complet – MariaDB sur Debian 12 & 13
 
-## 🎯 Objectif
+## 🎯 Objectif de ce dépôt
+
+> Ce dépôt a pour vocation de centraliser un ensemble de notions clés concernant la pile **LAMP** (Linux, Apache, MySQL/MariaDB, PHP/Perl/Python).  
+> Il s’adresse aux passionnés, étudiants et professionnels souhaitant mieux comprendre cette architecture web open-source, apprendre à déployer et gérer des applications basées sur LAMP, et se familiariser avec les concepts et outils essentiels à son bon fonctionnement et à son optimisation.
+
+---
+
+## 🎯 Objectif du tutoriel
 
 Installer, configurer et manipuler MariaDB sur Debian 12 ou 13 avec une approche pédagogique et des exemples concrets :  
 ✔️ Installation  
 ✔️ Création de base de données  
 ✔️ Gestion des utilisateurs et privilèges  
 ✔️ Requêtes de base (SHOW, CREATE, INSERT…)  
-✔️ Export / Import d'une base de données
+✔️ Export / Import d'une base de données  
+✔️ Sécurisation du serveur MariaDB
 
 ---
 
@@ -132,16 +139,9 @@ DESCRIBE nom_de_la_table;
 ### ✅ Exemple concret : une base nommée `cyberlogs`
 
 ```sql
--- Créer une base
 CREATE DATABASE cyberlogs;
-
--- Créer un utilisateur avec mot de passe
 CREATE USER 'analyste'@'localhost' IDENTIFIED BY 'CyberPass123!';
-
--- Donner les droits à cet utilisateur
 GRANT ALL PRIVILEGES ON cyberlogs.* TO 'analyste'@'localhost';
-
--- Appliquer les changements
 FLUSH PRIVILEGES;
 ```
 
@@ -169,13 +169,12 @@ VALUES
 
 ```sql
 SELECT * FROM connexions;
-
 SELECT * FROM connexions WHERE statut = 'refusé';
 ```
 
 ---
 
-## 🔒 6. Gestion des privilèges (bons réflexes sécurité)
+## 🔒 6. Gestion des privilèges
 
 ### 🔐 Révocation d'accès
 
@@ -194,8 +193,6 @@ SELECT User, Host FROM mysql.user;
 
 ## 📤 7. Export d'une base de données
 
-Sauvegarder la base `cyberlogs` dans un fichier `.sql` :
-
 ```bash
 mysqldump -u root -p cyberlogs > cyberlogs_backup.sql
 ```
@@ -203,8 +200,6 @@ mysqldump -u root -p cyberlogs > cyberlogs_backup.sql
 ---
 
 ## 📥 8. Import d’une base de données
-
-Importer une base à partir d’un fichier `.sql` :
 
 ```bash
 mysql -u root -p cyberlogs < cyberlogs_backup.sql
@@ -221,23 +216,91 @@ DROP TABLE connexions;
 
 ---
 
+## 🛡️ 10. Sécurisation avancée de MariaDB
+
+### ✅ Supprimer les utilisateurs anonymes
+
+```sql
+DELETE FROM mysql.user WHERE User='';
+FLUSH PRIVILEGES;
+```
+
+### ✅ Restreindre l'accès root au localhost
+
+```sql
+UPDATE mysql.user SET Host='localhost' WHERE User='root';
+FLUSH PRIVILEGES;
+```
+
+### ✅ Créer des utilisateurs dédiés
+
+```sql
+CREATE USER 'webapp'@'localhost' IDENTIFIED BY 'PasswordSecur3!';
+GRANT SELECT, INSERT, UPDATE, DELETE ON cyberlogs.* TO 'webapp'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+### ✅ Désactiver l’accès distant
+
+Dans `/etc/mysql/mariadb.conf.d/50-server.cnf` :
+
+```ini
+bind-address = 127.0.0.1
+```
+
+```bash
+sudo systemctl restart mariadb
+```
+
+### ✅ Sécuriser les fichiers système
+
+```bash
+sudo chown -R mysql:mysql /var/lib/mysql
+sudo chmod -R 750 /var/lib/mysql
+```
+
+### ✅ Activer le journal général des requêtes
+
+Dans `/etc/mysql/mariadb.conf.d/50-server.cnf` :
+
+```ini
+[mysqld]
+general_log = 1
+general_log_file = /var/log/mysql/general.log
+```
+
+```bash
+sudo touch /var/log/mysql/general.log
+sudo chown mysql:mysql /var/log/mysql/general.log
+sudo systemctl restart mariadb
+```
+
+### ✅ Bloquer les connexions réseau au port 3306
+
+```bash
+sudo ufw allow OpenSSH
+sudo ufw enable
+sudo ufw deny 3306
+```
+
+---
+
 ## 🧠 À retenir
 
-- ✅ MariaDB est une solution robuste, libre, et bien intégrée dans les systèmes Linux.
-- ✅ La gestion des privilèges est essentielle pour la sécurité.
-- ✅ Utiliser des exports réguliers (`mysqldump`) est une bonne pratique de sauvegarde.
-- ✅ Mieux vaut créer un utilisateur spécifique à chaque application ou service.
+- MariaDB est une solution robuste, libre, bien adaptée à LAMP.
+- Toujours sécuriser les accès, limiter les privilèges, et surveiller l’activité.
+- Ne jamais exposer MariaDB sur Internet sans tunnel sécurisé (VPN, SSH).
 
 ---
 
 📚 **Ressources utiles** :
-- Documentation officielle : [https://mariadb.com/kb/en/](https://mariadb.com/kb/en/)
-- Commandes SQL : [https://mariadb.com/kb/en/sql-statements/](https://mariadb.com/kb/en/sql-statements/)
+- [Documentation MariaDB](https://mariadb.com/kb/en/)
+- [Commandes SQL](https://mariadb.com/kb/en/sql-statements/)
 
 ---
 
 ✍️ Auteur : [0xCyberLiTech](https://github.com/0xCyberLiTech)  
-📅 Version : Debian 12 & 13 — MariaDB dernière version stable
+📅 Version : Debian 12 & 13 — MariaDB stable
 
 ---
 
