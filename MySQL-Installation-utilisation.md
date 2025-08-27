@@ -62,9 +62,6 @@ Le contenu est structuré, accessible et optimisé SEO pour répondre aux besoin
 ---
 
 # 🐬 Installation & utilisation de MariaDB
-
----
-
 ## 🎯 Objectif du tutoriel
 
 Installer, configurer et manipuler MariaDB sur Debian 12 ou 13 avec une approche pédagogique et des exemples concrets :
