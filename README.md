@@ -32,10 +32,6 @@
 
 </div>
 
-<!--
-Optimisation SEO : mots-clés LAMP, 0xCyberLiTech, tutoriels, guides, administration système, scripts Bash, Debian, apache, apache2, virtualhost, http, https, lamp, mysql, php, log, ressources techniques, étudiants, professionnels, formation, réseau, IT, bonnes pratiques, passionnés.
--->
-
 <div align="center">
   <img src="https://img.icons8.com/fluency/96/000000/cyber-security.png" alt="CyberSec" width="80"/>
 </div>
@@ -146,3 +142,4 @@ Le contenu est structuré, accessible et optimisé SEO pour répondre aux besoin
 <div align="center">
   <b>🔒 Un guide proposé par <a href="https://github.com/0xCyberLiTech">0xCyberLiTech</a> • Pour des tutoriels accessibles à tous. 🔒</b>
 </div>
+
