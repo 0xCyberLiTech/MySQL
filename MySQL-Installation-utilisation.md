@@ -54,6 +54,7 @@ sudo mariadb-dump --all-databases > backup.sql
 - **Niveau 2 — Repères Officiels (Ports IANA, Fichiers Debian &amp; Commandes de Validation) :** **Port IANA :** `TCP 3306` (écoutant par défaut sur `127.0.0.1`) &nbsp;|&nbsp; **Fichiers Debian :** `/etc/mysql/mariadb.conf.d/50-server.cnf`, `/var/log/mysql/error.log` &nbsp;|&nbsp; **Validation officielle :** `sudo mariadb-admin ping`.
 - **Niveau 3 — Diagnostic d'Incidents &amp; Ingénierie Avancée :** **Diagnostic & Architecture :** Sous Debian 12, 13 et 14, l'accès d'administration local `root` utilise l'authentification noyau sans mot de passe réseau **`unix_socket`**. Appliquez le principe du moindre privilège en créant un utilisateur SQL dédié par application (`GRANT ALL PRIVILEGES ON db.* TO 'app'@'localhost'`) et conservez le moteur **InnoDB** (support ACID, verrouillage par ligne et récupération sur crash).
 - **Sources de Vérité Officielles Éditeurs &amp; Standards :** [Documentation Officielle MariaDB Server](https://mariadb.com/kb/en/documentation/) &nbsp;·&nbsp; [Paquet Officiel Debian MariaDB](https://packages.debian.org/trixie/mariadb-server)
+- **Livres Blancs &amp; 67 Podcasts Audio R&amp;D :** [Portail 0xCyberLiTech](https://0xcyberlitech.com/) &nbsp;·&nbsp; [Livre Blanc SOC Cockpit v5.5](https://0xcyberlitech.com/soc-rd.html) &nbsp;·&nbsp; [Livre Blanc JARVIS Mark-VII](https://0xcyberlitech.com/jarvis-rd.html) &nbsp;·&nbsp; [Blueprint Logiciel &amp; Matériel RTX 5080](https://0xcyberlitech.com/blueprint-jarvis.html)
 
 </details>
 <!-- CIEL-PEDAGOGY-END -->
